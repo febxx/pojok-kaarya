@@ -1,11 +1,11 @@
 <div>
     @if($showModal)
-    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50" 
-         x-data 
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
+         x-data
          @keydown.escape.window="$wire.close()">
         <!-- Backdrop -->
         <div class="absolute inset-0" wire:click="close"></div>
-        
+
         <!-- Modal Content -->
         <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 overflow-hidden relative z-10">
             <!-- Modal Header -->
@@ -55,7 +55,7 @@
                         <input type="checkbox" wire:model="form.remember" class="w-4 h-4 text-accent border-gray-300 rounded focus:ring-accent">
                         <span class="ml-2 text-gray-600 text-sm">Ingat saya</span>
                     </label>
-                    <a href="{{ route('password.request') }}" class="text-accent text-sm hover:underline">Lupa password?</a>
+                    <!-- <a href="{{ route('password.request') }}" class="text-accent text-sm hover:underline">Lupa password?</a> -->
                 </div>
 
                 <!-- Submit Button -->

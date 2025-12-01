@@ -20,6 +20,12 @@ class RegisterModal extends Component
     #[Validate('required|string|lowercase|email|max:255|unique:users')]
     public string $email = '';
 
+    #[Validate('required|string|max:255')]
+    public string $kontak = '';
+
+    #[Validate('required|string|max:1000')]
+    public string $deskripsi_profil = '';
+
     #[Validate('required|string|min:8|confirmed')]
     public string $password = '';
 
@@ -38,7 +44,7 @@ class RegisterModal extends Component
     {
         $this->showModal = false;
         $this->resetValidation();
-        $this->reset(['name', 'email', 'password', 'password_confirmation']);
+        $this->reset(['name', 'email', 'kontak', 'deskripsi_profil', 'password', 'password_confirmation']);
     }
 
     public function register(): void
@@ -48,7 +54,10 @@ class RegisterModal extends Component
         $user = User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
+            'kontak' => $validated['kontak'],
+            'deskripsi_profil' => $validated['deskripsi_profil'],
             'password' => Hash::make($validated['password']),
+            'role' => 'user',
         ]);
 
         event(new Registered($user));

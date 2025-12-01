@@ -35,8 +35,12 @@ class LoginModal extends Component
         Session::regenerate();
 
         $this->close();
-        
-        $this->redirect(route('dashboard', absolute: false), navigate: true);
+
+        if (auth()->user()->role === 'admin') {
+            $this->redirect(route('admin.dashboard', absolute: false), navigate: true);
+        } else {
+            $this->redirect(route('dashboard', absolute: false), navigate: true);
+        }
     }
 
     public function switchToRegister(): void

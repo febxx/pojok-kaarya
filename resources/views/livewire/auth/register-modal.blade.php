@@ -1,11 +1,11 @@
 <div>
     @if($showModal)
-    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50" 
-         x-data 
+    <div class="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50"
+         x-data
          @keydown.escape.window="$wire.close()">
         <!-- Backdrop -->
         <div class="absolute inset-0" wire:click="close"></div>
-        
+
         <!-- Modal Content -->
         <div class="bg-white rounded-2xl shadow-2xl w-full max-w-md mx-4 overflow-hidden relative z-10 max-h-[90vh] overflow-y-auto">
             <!-- Modal Header -->
@@ -47,6 +47,34 @@
                             placeholder="nama@email.com">
                     </div>
                     @error('email') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
+                </div>
+
+                <!-- Kontak -->
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Kontak</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                            <i class="fas fa-phone"></i>
+                        </span>
+                        <input type="text" wire:model="kontak"
+                            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition"
+                            placeholder="No. HP atau media sosial">
+                    </div>
+                    @error('kontak') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
+                </div>
+
+                <!-- Deskripsi Profil -->
+                <div>
+                    <label class="block text-gray-700 font-medium mb-2">Deskripsi Profil</label>
+                    <div class="relative">
+                        <span class="absolute left-3 top-3 text-gray-400">
+                            <i class="fas fa-info-circle"></i>
+                        </span>
+                        <textarea wire:model="deskripsi_profil" rows="3"
+                            class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition resize-none"
+                            placeholder="Ceritakan sedikit tentang dirimu..."></textarea>
+                    </div>
+                    @error('deskripsi_profil') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
                 </div>
 
                 <!-- Password -->
