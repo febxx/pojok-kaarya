@@ -12,6 +12,8 @@ new #[Layout('layouts.guest')] class extends Component
 {
     public string $name = '';
     public string $email = '';
+    public string $kontak = '';
+    public string $deskripsi_profil = '';
     public string $password = '';
     public string $password_confirmation = '';
 
@@ -23,66 +25,130 @@ new #[Layout('layouts.guest')] class extends Component
         $validated = $this->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', 'unique:'.User::class],
+            'kontak' => ['required', 'string', 'max:255'],
+            'deskripsi_profil' => ['required', 'string', 'max:1000'],
             'password' => ['required', 'string', 'confirmed', Rules\Password::defaults()],
         ]);
 
         $validated['password'] = Hash::make($validated['password']);
+        $validated['role'] = 'user';
 
         event(new Registered($user = User::create($validated)));
 
         Auth::login($user);
 
-        $this->redirect(route('dashboard', absolute: false), navigate: true);
+        $this->redirect(route('landing', absolute: false), navigate: true);
     }
 }; ?>
 
 <div>
-    <form wire:submit="register">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-primary to-secondary p-6 text-white">
+        <h2 class="text-2xl font-bold">Daftar</h2>
+        <p class="text-white/80 mt-2">Bergabung dengan komunitas kreator Indonesia!</p>
+    </div>
+
+    <!-- Form -->
+    <form wire:submit="register" class="p-6 space-y-4 max-h-[70vh] overflow-y-auto">
         <!-- Name -->
         <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input wire:model="name" id="name" class="block mt-1 w-full" type="text" name="name" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+            <label class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
+            <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                    <i class="fas fa-user"></i>
+                </span>
+                <input type="text" wire:model="name" required autofocus
+                    class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition"
+                    placeholder="Nama lengkap kamu">
+            </div>
+            @error('name') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
         </div>
 
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="email" id="email" class="block mt-1 w-full" type="email" name="email" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+        <!-- Email -->
+        <div>
+            <label class="block text-gray-700 font-medium mb-2">Email</label>
+            <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                    <i class="fas fa-envelope"></i>
+                </span>
+                <input type="email" wire:model="email" required
+                    class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition"
+                    placeholder="nama@email.com">
+            </div>
+            @error('email') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
+        </div>
+
+        <!-- Kontak -->
+        <div>
+            <label class="block text-gray-700 font-medium mb-2">Kontak</label>
+            <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                    <i class="fas fa-phone"></i>
+                </span>
+                <input type="text" wire:model="kontak" required
+                    class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition"
+                    placeholder="No. HP atau media sosial">
+            </div>
+            @error('kontak') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
+        </div>
+
+        <!-- Deskripsi Profil -->
+        <div>
+            <label class="block text-gray-700 font-medium mb-2">Deskripsi Profil</label>
+            <div class="relative">
+                <span class="absolute left-3 top-3 text-gray-400">
+                    <i class="fas fa-info-circle"></i>
+                </span>
+                <textarea wire:model="deskripsi_profil" rows="3" required
+                    class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition resize-none"
+                    placeholder="Ceritakan sedikit tentang dirimu..."></textarea>
+            </div>
+            @error('deskripsi_profil') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input wire:model="password" id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
+        <div>
+            <label class="block text-gray-700 font-medium mb-2">Password</label>
+            <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                    <i class="fas fa-lock"></i>
+                </span>
+                <input type="password" wire:model="password" required
+                    class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition"
+                    placeholder="Minimal 8 karakter">
+            </div>
+            @error('password') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
         </div>
 
         <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input wire:model="password_confirmation" id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
+        <div>
+            <label class="block text-gray-700 font-medium mb-2">Konfirmasi Password</label>
+            <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                    <i class="fas fa-lock"></i>
+                </span>
+                <input type="password" wire:model="password_confirmation" required
+                    class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition"
+                    placeholder="Ulangi password">
+            </div>
+            @error('password_confirmation') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}" wire:navigate>
-                {{ __('Already registered?') }}
+        <!-- Submit Button -->
+        <button type="submit"
+            class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition transform hover:-translate-y-0.5 flex items-center justify-center">
+            <span wire:loading.remove wire:target="register">Daftar Sekarang</span>
+            <span wire:loading wire:target="register">
+                <i class="fas fa-spinner fa-spin mr-2"></i> Memproses...
+            </span>
+        </button>
+
+        <!-- Switch to Login -->
+        <p class="text-center text-gray-600 mt-4">
+            Sudah punya akun?
+            <a href="{{ route('login') }}" wire:navigate class="text-accent font-semibold hover:underline">
+                Masuk disini
             </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
+        </p>
     </form>
 </div>

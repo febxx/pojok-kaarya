@@ -66,7 +66,7 @@ class RegisterModal extends Component
 
         $this->close();
 
-        $this->redirect(route('dashboard', absolute: false), navigate: true);
+        $this->redirect(route('landing', absolute: false), navigate: true);
     }
 
     public function switchToLogin(): void

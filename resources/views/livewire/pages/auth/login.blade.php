@@ -20,52 +20,73 @@ new #[Layout('layouts.guest')] class extends Component
 
         Session::regenerate();
 
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        $this->redirect(route('landing', absolute: false), navigate: true);
     }
 }; ?>
 
 <div>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-primary to-secondary p-6 text-white">
+        <h2 class="text-2xl font-bold">Masuk</h2>
+        <p class="text-white/80 mt-2">Selamat datang kembali di PojokKaarya!</p>
+    </div>
 
-    <form wire:submit="login">
-        <!-- Email Address -->
+    <!-- Form -->
+    <form wire:submit="login" class="p-6 space-y-4">
+        <!-- Session Status -->
+        <x-auth-session-status class="mb-4" :status="session('status')" />
+
+        <!-- Email -->
         <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input wire:model="form.email" id="email" class="block mt-1 w-full" type="email" name="email" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('form.email')" class="mt-2" />
+            <label class="block text-gray-700 font-medium mb-2">Email</label>
+            <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                    <i class="fas fa-envelope"></i>
+                </span>
+                <input type="email" wire:model="form.email" required autofocus
+                    class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition"
+                    placeholder="nama@email.com">
+            </div>
+            @error('form.email') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
         </div>
 
         <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input wire:model="form.password" id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('form.password')" class="mt-2" />
+        <div>
+            <label class="block text-gray-700 font-medium mb-2">Password</label>
+            <div class="relative">
+                <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                    <i class="fas fa-lock"></i>
+                </span>
+                <input type="password" wire:model="form.password" required
+                    class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-accent focus:border-transparent outline-none transition"
+                    placeholder="Masukkan password">
+            </div>
+            @error('form.password') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
         </div>
 
         <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember" class="inline-flex items-center">
-                <input wire:model="form.remember" id="remember" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
+        <div class="flex items-center justify-between">
+            <label class="flex items-center">
+                <input type="checkbox" wire:model="form.remember" class="w-4 h-4 text-accent border-gray-300 rounded focus:ring-accent">
+                <span class="ml-2 text-gray-600 text-sm">Ingat saya</span>
             </label>
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}" wire:navigate>
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
+        <!-- Submit Button -->
+        <button type="submit"
+            class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 rounded-lg font-semibold hover:opacity-90 transition transform hover:-translate-y-0.5 flex items-center justify-center">
+            <span wire:loading.remove wire:target="login">Masuk</span>
+            <span wire:loading wire:target="login">
+                <i class="fas fa-spinner fa-spin mr-2"></i> Memproses...
+            </span>
+        </button>
 
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
+        <!-- Switch to Register -->
+        <p class="text-center text-gray-600 mt-4">
+            Belum punya akun?
+            <a href="{{ route('register') }}" wire:navigate class="text-accent font-semibold hover:underline">
+                Daftar sekarang
+            </a>
+        </p>
     </form>
 </div>

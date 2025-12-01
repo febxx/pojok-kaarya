@@ -28,9 +28,15 @@
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-2">Foto Kreasi</label>
                 <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center">
-                    @if($foto)
-                        <img src="{{ $foto->temporaryUrl() }}" class="mx-auto max-h-64 rounded-lg mb-4">
-                    @endif
+                    <div wire:loading wire:target="foto" class="mb-4">
+                        <i class="fas fa-spinner fa-spin text-3xl text-primary"></i>
+                        <p class="text-gray-500 mt-2">Mengupload foto...</p>
+                    </div>
+                    <div wire:loading.remove wire:target="foto">
+                        @if($foto)
+                            <img src="{{ $foto->temporaryUrl() }}" class="mx-auto max-h-64 rounded-lg mb-4">
+                        @endif
+                    </div>
                     <input type="file" wire:model="foto" accept="image/*" class="w-full">
                 </div>
                 @error('foto') <span class="text-red-500 text-sm mt-1">{{ $message }}</span> @enderror
@@ -56,12 +62,17 @@
                     Batal
                 </a>
                 <button type="submit"
-                    class="px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition flex items-center">
-                    <span wire:loading.remove wire:target="save">
+                    wire:loading.attr="disabled"
+                    wire:target="foto,save"
+                    class="px-6 py-3 bg-primary text-white rounded-lg font-semibold hover:bg-primary/90 transition flex items-center disabled:opacity-50 disabled:cursor-not-allowed">
+                    <span wire:loading.remove wire:target="foto,save">
                         <i class="fas fa-upload mr-2"></i>Unggah Kreasi
                     </span>
+                    <span wire:loading wire:target="foto">
+                        <i class="fas fa-spinner fa-spin mr-2"></i>Mengupload foto...
+                    </span>
                     <span wire:loading wire:target="save">
-                        <i class="fas fa-spinner fa-spin mr-2"></i>Mengunggah...
+                        <i class="fas fa-spinner fa-spin mr-2"></i>Menyimpan...
                     </span>
                 </button>
             </div>
