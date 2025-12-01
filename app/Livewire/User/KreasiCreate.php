@@ -36,7 +36,7 @@ class KreasiCreate extends Component
         ]);
 
         session()->flash('message', 'Kreasi berhasil diunggah!');
-        $this->redirect(route('user.kreasi.index'), navigate: true);
+        $this->redirect(route('kreasi.index'), navigate: true);
     }
 
     public function render()

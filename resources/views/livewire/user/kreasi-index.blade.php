@@ -4,7 +4,7 @@
             <h1 class="text-2xl font-bold text-gray-800">Kelola Kreasi</h1>
             <p class="text-gray-600">Lihat dan kelola semua kreasi Anda</p>
         </div>
-        <a href="{{ route('user.kreasi.create') }}"
+        <a href="{{ route('kreasi.create') }}"
            class="px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition flex items-center">
             <i class="fas fa-plus mr-2"></i>Unggah Baru
         </a>
@@ -60,7 +60,7 @@
             <i class="fas fa-images text-6xl text-gray-300 mb-4"></i>
             <h3 class="text-lg font-medium text-gray-600">Belum ada kreasi</h3>
             <p class="text-gray-500 mb-4">Mulai unggah kreasi pertamamu!</p>
-            <a href="{{ route('user.kreasi.create') }}"
+            <a href="{{ route('kreasi.create') }}"
                class="inline-block px-4 py-2 bg-primary text-white rounded-lg font-medium hover:bg-primary/90 transition">
                 <i class="fas fa-plus mr-2"></i>Unggah Kreasi
             </a>

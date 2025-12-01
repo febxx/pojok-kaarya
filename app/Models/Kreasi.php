@@ -23,4 +23,39 @@ class Kreasi extends Model
     {
         return $this->belongsTo(Tag::class);
     }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
+    }
+
+    public function bookmarks()
+    {
+        return $this->hasMany(Bookmark::class);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
+    }
+
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class);
+    }
+
+    public function isLikedBy($userId): bool
+    {
+        return $this->likes()->where('user_id', $userId)->exists();
+    }
+
+    public function isBookmarkedBy($userId): bool
+    {
+        return $this->bookmarks()->where('user_id', $userId)->exists();
+    }
+
+    public function averageRating(): float
+    {
+        return $this->ratings()->avg('rating') ?? 0;
+    }
 }

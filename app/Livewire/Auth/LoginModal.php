@@ -39,7 +39,7 @@ class LoginModal extends Component
         if (auth()->user()->role === 'admin') {
             $this->redirect(route('admin.dashboard', absolute: false), navigate: true);
         } else {
-            $this->redirect(route('dashboard', absolute: false), navigate: true);
+            $this->redirect(route('landing', absolute: false), navigate: true);
         }
     }
 

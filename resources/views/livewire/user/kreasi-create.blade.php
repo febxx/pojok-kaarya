@@ -51,7 +51,7 @@
 
             <!-- Submit -->
             <div class="flex justify-end space-x-4">
-                <a href="{{ route('user.kreasi.index') }}"
+                <a href="{{ route('kreasi.index') }}"
                    class="px-6 py-3 bg-gray-200 text-gray-700 rounded-lg font-semibold hover:bg-gray-300 transition">
                     Batal
                 </a>

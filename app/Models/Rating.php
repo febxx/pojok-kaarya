@@ -11,4 +11,14 @@ class Rating extends Model
         'kreasi_id',
         'rating',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function kreasi()
+    {
+        return $this->belongsTo(Kreasi::class);
+    }
 }

@@ -28,20 +28,20 @@
 
                     <!-- Desktop Nav Links -->
                     <div class="hidden md:flex items-center ml-10 space-x-4">
-                        <a href="{{ route('user.dashboard') }}"
-                           class="px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('user.dashboard') ? 'bg-gray-100' : 'text-gray-600 hover:bg-gray-100' }}">
+                        <a href="{{ route('dashboard') }}"
+                           class="px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('dashboard') ? 'bg-gray-100' : 'text-gray-600 hover:bg-gray-100' }}">
                             <i class="fas fa-home mr-2"></i>Dashboard
                         </a>
-                        <a href="{{ route('user.kreasi.create') }}"
-                           class="px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('user.kreasi.create') ? 'bg-gray-100' : 'text-gray-600 hover:bg-gray-100' }}">
+                        <a href="{{ route('kreasi.create') }}"
+                           class="px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('kreasi.create') ? 'bg-gray-100' : 'text-gray-600 hover:bg-gray-100' }}">
                             <i class="fas fa-plus mr-2"></i>Unggah Kreasi
                         </a>
-                        <a href="{{ route('user.kreasi.index') }}"
-                           class="px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('user.kreasi.index') ? 'bg-gray-100' : 'text-gray-600 hover:bg-gray-100' }}">
+                        <a href="{{ route('kreasi.index') }}"
+                           class="px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('kreasi.index') ? 'bg-gray-100' : 'text-gray-600 hover:bg-gray-100' }}">
                             <i class="fas fa-images mr-2"></i>Kelola Kreasi
                         </a>
-                        <a href="{{ route('user.profile') }}"
-                           class="px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('user.profile') ? 'bg-gray-100' : 'text-gray-600 hover:bg-gray-100' }}">
+                        <a href="{{ route('profile') }}"
+                           class="px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('profile') ? 'bg-gray-100' : 'text-gray-600 hover:bg-gray-100' }}">
                             <i class="fas fa-user mr-2"></i>Profil
                         </a>
                     </div>
@@ -69,20 +69,20 @@
         <!-- Mobile Menu -->
         <div id="mobileMenu" class="hidden md:hidden border-t border-gray-200 bg-white">
             <div class="px-4 py-3 space-y-2">
-                <a href="{{ route('user.dashboard') }}"
-                   class="block px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('user.dashboard') ? 'bg-gray-100' : 'text-gray-600 hover:bg-gray-100' }}">
+                <a href="{{ route('dashboard') }}"
+                   class="block px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('dashboard') ? 'bg-gray-100' : 'text-gray-600 hover:bg-gray-100' }}">
                     <i class="fas fa-home mr-2"></i>Dashboard
                 </a>
-                <a href="{{ route('user.kreasi.create') }}"
-                   class="block px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('user.kreasi.create') ? 'bg-gray-100' : 'text-gray-600 hover:bg-gray-100' }}">
+                <a href="{{ route('kreasi.create') }}"
+                   class="block px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('kreasi.create') ? 'bg-gray-100' : 'text-gray-600 hover:bg-gray-100' }}">
                     <i class="fas fa-plus mr-2"></i>Unggah Kreasi
                 </a>
-                <a href="{{ route('user.kreasi.index') }}"
-                   class="block px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('user.kreasi.index') ? 'bg-gray-100' : 'text-gray-600 hover:bg-gray-100' }}">
+                <a href="{{ route('kreasi.index') }}"
+                   class="block px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('kreasi.index') ? 'bg-gray-100' : 'text-gray-600 hover:bg-gray-100' }}">
                     <i class="fas fa-images mr-2"></i>Kelola Kreasi
                 </a>
-                <a href="{{ route('user.profile') }}"
-                   class="block px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('user.profile') ? 'bg-gray-100' : 'text-gray-600 hover:bg-gray-100' }}">
+                <a href="{{ route('profile') }}"
+                   class="block px-3 py-2 rounded-lg text-sm font-medium {{ request()->routeIs('profile') ? 'bg-gray-100' : 'text-gray-600 hover:bg-gray-100' }}">
                     <i class="fas fa-user mr-2"></i>Profil
                 </a>
             </div>

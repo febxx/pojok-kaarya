@@ -10,4 +10,14 @@ class Bookmark extends Model
         'user_id',
         'kreasi_id',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    public function kreasi()
+    {
+        return $this->belongsTo(Kreasi::class);
+    }
 }
