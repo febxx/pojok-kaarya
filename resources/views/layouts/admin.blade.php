@@ -50,18 +50,15 @@
                     <i class="fas fa-users w-5 mr-3"></i>
                     Pengguna
                 </a>
-                <a href="#" class="flex items-center px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-gray-700">
+                <a href="{{ route('admin.kreasi') }}"
+                   class="flex items-center px-3 py-2 rounded-lg text-sm {{ request()->routeIs('admin.kreasi') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700' }}">
                     <i class="fas fa-images w-5 mr-3"></i>
-                    Karya
+                    Kreasi
                 </a>
                 <a href="{{ route('admin.tags') }}"
                    class="flex items-center px-3 py-2 rounded-lg text-sm {{ request()->routeIs('admin.tags') ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700' }}">
                     <i class="fas fa-tags w-5 mr-3"></i>
                     Tags
-                </a>
-                <a href="#" class="flex items-center px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-gray-700">
-                    <i class="fas fa-cog w-5 mr-3"></i>
-                    Hak Akses
                 </a>
             </nav>
 
@@ -69,8 +66,15 @@
             <div class="px-3 py-4 border-t border-gray-700">
                 <a href="{{ route('landing') }}" class="flex items-center px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-gray-700">
                     <i class="fas fa-arrow-left w-5 mr-3"></i>
-                    Kembali ke Site
+                    Kembali ke Situs
                 </a>
+                <form method="POST" action="{{ route('logout') }}">
+                    @csrf
+                    <button type="submit" class="w-full flex items-center px-3 py-2 rounded-lg text-sm text-gray-300 hover:bg-gray-700">
+                        <i class="fas fa-sign-out-alt w-5 mr-3"></i>
+                        Logout
+                    </button>
+                </form>
             </div>
         </div>
     </aside>
@@ -87,9 +91,6 @@
                 <h1 class="text-xl font-semibold text-gray-800">{{ $title ?? 'Dashboard' }}</h1>
             </div>
             <div class="flex items-center space-x-4">
-                <button class="text-gray-500 hover:text-gray-700">
-                    <i class="fas fa-bell"></i>
-                </button>
                 <div class="flex items-center">
                     <div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-white text-sm">
                         {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}

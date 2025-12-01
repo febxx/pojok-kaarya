@@ -4,6 +4,7 @@ use App\Http\Controllers\LandingController;
 use App\Livewire\Admin\Dashboard as AdminDashboard;
 use App\Livewire\Admin\Users as AdminUsers;
 use App\Livewire\Admin\Tags as AdminTags;
+use App\Livewire\Admin\Kreasi as AdminKreasi;
 use Illuminate\Support\Facades\Route;
 
 // Landing Page
@@ -22,6 +23,7 @@ Route::prefix('admin')->middleware(['auth', 'admin'])->name('admin.')->group(fun
     Route::get('/dashboard', AdminDashboard::class)->name('dashboard');
     Route::get('/users', AdminUsers::class)->name('users');
     Route::get('/tags', AdminTags::class)->name('tags');
+    Route::get('/kreasi', AdminKreasi::class)->name('kreasi');
 });
 
 require __DIR__.'/auth.php';
