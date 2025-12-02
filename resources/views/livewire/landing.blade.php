@@ -139,34 +139,56 @@
     <footer class="bg-gray-800 text-white py-12">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Brand -->
                 <div>
                     <h3 class="text-accent text-xl font-bold mb-4">🎨 PojokKaarya</h3>
-                    <p class="text-gray-400">Platform untuk para kreator berbagi karya dan membangun komunitas kreatif Indonesia.</p>
+                    <p class="text-gray-400">
+                        Platform untuk para kreator berbagi karya, menemukan inspirasi, dan membangun komunitas kreatif Indonesia.
+                    </p>
                 </div>
+                
+                <!-- Navigation -->
                 <div>
                     <h4 class="font-semibold mb-4">Navigasi</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#beranda" class="hover:text-white">Beranda</a></li>
-                        <li><a href="#jelajah" class="hover:text-white">Jelajah Karya</a></li>
+                        <li><a href="#beranda" class="hover:text-white transition">Beranda</a></li>
+                        <li><a href="#jelajah" class="hover:text-white transition">Jelajah Karya</a></li>
+                        <li><a href="#komunitas" class="hover:text-white transition">Komunitas</a></li>
+                        <li><a href="#tentang" class="hover:text-white transition">Tentang Kami</a></li>
                     </ul>
                 </div>
+                
+                <!-- Help -->
                 <div>
                     <h4 class="font-semibold mb-4">Bantuan</h4>
                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="#" class="hover:text-white">FAQ</a></li>
-                        <li><a href="#" class="hover:text-white">Panduan</a></li>
+                        <li><a href="#faq" class="hover:text-white transition">FAQ</a></li>
+                        <li><a href="#panduan" class="hover:text-white transition">Panduan Pengguna</a></li>
+                        <li><a href="#privasi" class="hover:text-white transition">Kebijakan Privasi</a></li>
+                        <li><a href="#syarat" class="hover:text-white transition">Syarat & Ketentuan</a></li>
                     </ul>
                 </div>
+                
+                <!-- Contact -->
                 <div>
                     <h4 class="font-semibold mb-4">Hubungi Kami</h4>
                     <ul class="space-y-2 text-gray-400">
                         <li>📧 info@pojokkaarya.id</li>
-                        <li>📍 Bekasi, Indonesia</li>
+                        <li>📱 +62 812-3456-7890</li>
+                        <li>📍 Bekasi, West Java, Indonesia</li>
+                        <li class="flex space-x-4 mt-3 text-xl">
+                            <a href="#" class="hover:text-white transition">📘</a>
+                            <a href="#" class="hover:text-white transition">📷</a>
+                            <a href="#" class="hover:text-white transition">🐦</a>
+                            <a href="#" class="hover:text-white transition">💼</a>
+                        </li>
                     </ul>
                 </div>
             </div>
+            
+            <!-- Copyright -->
             <div class="border-t border-gray-700 mt-8 pt-8 text-center text-gray-400">
-                <p>&copy; 2024 PojokKaarya. Dibuat dengan ❤️</p>
+                <p>&copy; 2024 PojokKaarya. Dibuat dengan ❤️ oleh Naimah | TRPL B</p>
             </div>
         </div>
     </footer>

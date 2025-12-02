@@ -20,94 +20,41 @@
             </div>
         </div>
 
-        <!-- Total Admins -->
-        <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-[#1a1a2e]">
-            <div class="flex items-center justify-between">
-                <div>
-                    <p class="text-gray-500 text-sm font-medium">Total Admin</p>
-                    <p class="text-3xl font-bold text-gray-800">{{ $stats['total_admins'] }}</p>
-                </div>
-                <div class="w-12 h-12 bg-indigo-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-user-shield text-[#1a1a2e] text-xl"></i>
-                </div>
-            </div>
-        </div>
-
-        <!-- Total Creators -->
+        <!-- Total Kreasi -->
         <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-green-500">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-gray-500 text-sm font-medium">Total Kreator</p>
-                    <p class="text-3xl font-bold text-gray-800">{{ $stats['total_creators'] }}</p>
+                    <p class="text-gray-500 text-sm font-medium">Total Kreasi</p>
+                    <p class="text-3xl font-bold text-gray-800">{{ $stats['total_kreasi'] }}</p>
                 </div>
                 <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-palette text-green-500 text-xl"></i>
+                    <i class="fas fa-images text-green-500 text-xl"></i>
                 </div>
             </div>
         </div>
 
-        <!-- New Users Today -->
+        <!-- Total Tags -->
+        <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-purple-500">
+            <div class="flex items-center justify-between">
+                <div>
+                    <p class="text-gray-500 text-sm font-medium">Total Tag</p>
+                    <p class="text-3xl font-bold text-gray-800">{{ $stats['total_tags'] }}</p>
+                </div>
+                <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center">
+                    <i class="fas fa-tags text-purple-500 text-xl"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Kreasi Hari Ini -->
         <div class="bg-white rounded-xl shadow-sm p-6 border-l-4 border-yellow-500">
             <div class="flex items-center justify-between">
                 <div>
-                    <p class="text-gray-500 text-sm font-medium">User Baru Hari Ini</p>
-                    <p class="text-3xl font-bold text-gray-800">{{ $stats['new_users_today'] }}</p>
+                    <p class="text-gray-500 text-sm font-medium">Kreasi Hari Ini</p>
+                    <p class="text-3xl font-bold text-gray-800">{{ $stats['kreasi_today'] }}</p>
                 </div>
                 <div class="w-12 h-12 bg-yellow-100 rounded-full flex items-center justify-center">
-                    <i class="fas fa-user-plus text-yellow-500 text-xl"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Quick Actions & Recent Activity -->
-    <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <!-- Quick Actions -->
-        <div class="bg-white rounded-xl shadow-sm p-6">
-            <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                <i class="fas fa-bolt text-[#0f3460] mr-2"></i>Aksi Cepat
-            </h3>
-            <div class="grid grid-cols-2 gap-3">
-                <a href="#" class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-[#0f3460] hover:text-white transition group">
-                    <i class="fas fa-user-plus text-[#0f3460] group-hover:text-white mr-3"></i>
-                    <span class="font-medium">Tambah User</span>
-                </a>
-                <a href="#" class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-[#0f3460] hover:text-white transition group">
-                    <i class="fas fa-folder-plus text-[#0f3460] group-hover:text-white mr-3"></i>
-                    <span class="font-medium">Tambah Kategori</span>
-                </a>
-                <a href="#" class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-[#0f3460] hover:text-white transition group">
-                    <i class="fas fa-chart-bar text-[#0f3460] group-hover:text-white mr-3"></i>
-                    <span class="font-medium">Lihat Laporan</span>
-                </a>
-                <a href="#" class="flex items-center p-4 bg-gray-50 rounded-lg hover:bg-[#0f3460] hover:text-white transition group">
-                    <i class="fas fa-cog text-[#0f3460] group-hover:text-white mr-3"></i>
-                    <span class="font-medium">Pengaturan</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- System Info -->
-        <div class="bg-white rounded-xl shadow-sm p-6">
-            <h3 class="text-lg font-semibold text-gray-800 mb-4">
-                <i class="fas fa-info-circle text-[#0f3460] mr-2"></i>Informasi Sistem
-            </h3>
-            <div class="space-y-3">
-                <div class="flex justify-between items-center py-2 border-b border-gray-100">
-                    <span class="text-gray-600">Laravel Version</span>
-                    <span class="font-medium text-gray-800">{{ app()->version() }}</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-100">
-                    <span class="text-gray-600">PHP Version</span>
-                    <span class="font-medium text-gray-800">{{ phpversion() }}</span>
-                </div>
-                <div class="flex justify-between items-center py-2 border-b border-gray-100">
-                    <span class="text-gray-600">Environment</span>
-                    <span class="px-2 py-1 bg-green-100 text-green-700 rounded text-sm font-medium">{{ app()->environment() }}</span>
-                </div>
-                <div class="flex justify-between items-center py-2">
-                    <span class="text-gray-600">Waktu Server</span>
-                    <span class="font-medium text-gray-800">{{ now()->format('d M Y, H:i') }}</span>
+                    <i class="fas fa-calendar-plus text-yellow-500 text-xl"></i>
                 </div>
             </div>
         </div>

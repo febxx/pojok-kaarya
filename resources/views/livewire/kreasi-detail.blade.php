@@ -49,6 +49,12 @@
                                     <i class="{{ $kreasi->isBookmarkedBy(auth()->id()) ? 'fas' : 'far' }} fa-bookmark"></i>
                                     <span>Simpan</span>
                                 </button>
+                                <!-- Download -->
+                                <button onclick="downloadImage('{{ Storage::url($kreasi->foto) }}', '{{ $kreasi->judul }}')"
+                                    class="flex items-center space-x-2 px-4 py-2 bg-gray-100 text-gray-600 rounded-lg hover:bg-gray-200 transition">
+                                    <i class="fas fa-download"></i>
+                                    <span>Download</span>
+                                </button>
                             </div>
                             <!-- Share -->
                             <button onclick="navigator.share ? navigator.share({title: '{{ $kreasi->judul }}', url: window.location.href}) : navigator.clipboard.writeText(window.location.href).then(() => alert('Link disalin!'))"
@@ -170,5 +176,34 @@
             </div>
         </div>
     </div>
-</div>
 
+    <script>
+        function downloadImage(url, title) {
+            fetch(url)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Gagal mengambil gambar');
+                    }
+                    return response.blob();
+                })
+                .then(blob => {
+                    const extension = url.split('.').pop().split('?')[0] || 'jpg';
+                    const filename = title.replace(/[^a-zA-Z0-9]/g, '_') + '.' + extension;
+
+                    const link = document.createElement('a');
+                    link.href = URL.createObjectURL(blob);
+                    link.download = filename;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(link.href);
+
+                    alert('Gambar berhasil didownload!');
+                })
+                .catch(error => {
+                    console.error('Download error:', error);
+                    alert('Gagal mendownload gambar. Silakan coba lagi.');
+                });
+        }
+    </script>
+</div>

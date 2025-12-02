@@ -6,6 +6,7 @@
 
     <!-- Stats Cards -->
     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <!-- Total Kreasi -->
         <div class="bg-white rounded-lg shadow-sm p-6">
             <div class="flex items-center">
                 <div class="p-3 bg-blue-100 rounded-full">
@@ -18,14 +19,28 @@
             </div>
         </div>
 
+        <!-- Total Likes -->
+        <div class="bg-white rounded-lg shadow-sm p-6">
+            <div class="flex items-center">
+                <div class="p-3 bg-red-100 rounded-full">
+                    <i class="fas fa-heart text-red-600 text-xl"></i>
+                </div>
+                <div class="ml-4">
+                    <p class="text-sm text-gray-500">Total Likes</p>
+                    <p class="text-2xl font-bold text-gray-800">{{ $totalLikes }}</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Total Followers -->
         <div class="bg-white rounded-lg shadow-sm p-6">
             <div class="flex items-center">
                 <div class="p-3 bg-purple-100 rounded-full">
-                    <i class="fas fa-calendar text-purple-600 text-xl"></i>
+                    <i class="fas fa-users text-purple-600 text-xl"></i>
                 </div>
                 <div class="ml-4">
-                    <p class="text-sm text-gray-500">Bergabung</p>
-                    <p class="text-lg font-semibold text-gray-800">{{ auth()->user()->created_at->format('d M Y') }}</p>
+                    <p class="text-sm text-gray-500">Total Followers</p>
+                    <p class="text-2xl font-bold text-gray-800">{{ $totalFollowers }}</p>
                 </div>
             </div>
         </div>

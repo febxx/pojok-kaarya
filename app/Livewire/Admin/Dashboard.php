@@ -3,6 +3,8 @@
 namespace App\Livewire\Admin;
 
 use App\Livewire\Actions\Logout;
+use App\Models\Kreasi;
+use App\Models\Tag;
 use App\Models\User;
 use Livewire\Component;
 
@@ -14,9 +16,9 @@ class Dashboard extends Component
     {
         $this->stats = [
             'total_users' => User::count(),
-            'total_admins' => User::where('role', 'admin')->count(),
-            'total_creators' => User::where('role', 'creator')->count(),
-            'new_users_today' => User::whereDate('created_at', today())->count(),
+            'total_kreasi' => Kreasi::count(),
+            'total_tags' => Tag::count(),
+            'kreasi_today' => Kreasi::whereDate('created_at', today())->count(),
         ];
     }
 
