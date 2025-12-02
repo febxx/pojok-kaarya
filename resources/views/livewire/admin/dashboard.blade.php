@@ -59,5 +59,63 @@
             </div>
         </div>
     </div>
+
+    <!-- Chart Kreasi 7 Hari Terakhir -->
+    <div class="bg-white rounded-xl shadow-sm p-6">
+        <h3 class="text-lg font-semibold text-gray-800 mb-4">
+            <i class="fas fa-chart-bar text-[#0f3460] mr-2"></i>Kreasi 7 Hari Terakhir
+        </h3>
+        <div class="h-64">
+            <canvas id="kreasiChart"></canvas>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const ctx = document.getElementById('kreasiChart').getContext('2d');
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: @json($chartData['labels']),
+                    datasets: [{
+                        label: 'Jumlah Kreasi',
+                        data: @json($chartData['data']),
+                        backgroundColor: 'rgba(15, 52, 96, 0.8)',
+                        borderColor: 'rgba(15, 52, 96, 1)',
+                        borderWidth: 1,
+                        borderRadius: 6,
+                        barThickness: 40,
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1,
+                                precision: 0
+                            },
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            }
+                        }
+                    }
+                }
+            });
+        });
+    </script>
 </div>
 
